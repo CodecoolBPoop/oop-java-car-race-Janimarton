@@ -15,27 +15,41 @@ public class Race {
     public static void main(String[] args) {
         System.out.println("The race begins \n");
         System.out.println("The cars: \n");
-        Car [] cars = new Car[10];
-        for (int i=0; i<cars.length; i++){
+        Car[] cars = new Car[10];
+        for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
         }
         for (Car car : cars) {
             System.out.println(car.name + " is goes " + car.normalSpeed + " km/h to: " + car.distanceTraveled);
         }
         cars[0].moveForAnHour();
-        System.out.println(cars[0].distanceTraveled +"\n");
+        System.out.println(cars[0].distanceTraveled + "\n");
         System.out.println("The trucks: \n");
-        Truck [] trucks = new Truck[10];
+        Truck[] trucks = new Truck[10];
         for (int i = 0; i < trucks.length; i++) {
             trucks[i] = new Truck();
         }
-        for (Truck truck:
-             trucks) {
+        for (Truck truck :
+                trucks) {
             System.out.println(truck.name + " is goes " + truck.normalSpeed + " km/h to: " + truck.distanceTraveled);
 
         }
         trucks[0].moveForAnHour();
-        System.out.println(trucks[0].distanceTraveled);
+        System.out.println(trucks[0].distanceTraveled + "\n");
+
+        System.out.println("The motorcycles: \n");
+        Motorcycles[] motorcycles = new Motorcycles[10];
+        for (int i = 0; i < motorcycles.length; i++) {
+            motorcycles[i] = new Motorcycles();
+        }
+        for (Motorcycles motorcycle :
+                motorcycles) {
+            System.out.println(motorcycle.name + " is goes " + motorcycle.normalSpeed + " km/h to: " +
+                    motorcycle.distanceTraveled);
+        }
+        motorcycles[0].moveForAnHour();
+        System.out.println(motorcycles[0].distanceTraveled + "\n");
+
 
     }
 }
