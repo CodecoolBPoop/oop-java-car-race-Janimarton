@@ -12,6 +12,9 @@ abstract class Vehicle {
         this.distanceTraveled += speedForAnHour;
     }
 
+    public abstract boolean setBreakDown();
+
+    public abstract void setNormalSpeedTo0();
 }
 
 class Car extends Vehicle {
@@ -47,14 +50,23 @@ class Car extends Vehicle {
     }
 
     public void setNormalSpeedToMax() {
-        int maxSpeed = 75;
-        this.normalSpeed = maxSpeed;
+        this.normalSpeed = 75;
     }
 
 
+    @Override
+    public boolean setBreakDown() {
+        return false;
+    }
+
+    @Override
+    public void setNormalSpeedTo0() {
+
+    }
 }
 
 class Truck extends Vehicle {
+    private final boolean isBreakDown;
 
 //    Truck // speed: 100km/h. 5% chance of breaking down for 2 hours.
 //            // Truck drivers are boring. They call all their trucks a random number between 0 and 1000.
@@ -66,6 +78,7 @@ class Truck extends Vehicle {
         this.name = getTruckName();
         this.normalSpeed = getNormalSpeed();
         this.distanceTraveled = 0;
+        this.isBreakDown = setBreakDown();
     }
 
     private String getTruckName() {
@@ -74,11 +87,10 @@ class Truck extends Vehicle {
     }
 
     private int getNormalSpeed() {
-        int normalSpeed = 100;
-        return normalSpeed;
+        return normalSpeed=100;
     }
 
-    private boolean setBreakDown() {
+    public boolean setBreakDown() {
         boolean itIsBreakingDown = false;
         Random allCases = new Random(99);
         int chance = allCases.nextInt();
@@ -88,10 +100,11 @@ class Truck extends Vehicle {
         return itIsBreakingDown;
     }
 
-    private void setNormalSpeedTo0() {
-        int breakDownSpeed = 0;
-        this.normalSpeed = breakDownSpeed;
+    @Override
+    public void setNormalSpeedTo0() {
+        this.normalSpeed = 0;
     }
+
 
 }
 
@@ -130,4 +143,13 @@ class Motorcycles extends Vehicle {
 
     }
 
+    @Override
+    public boolean setBreakDown() {
+        return false;
+    }
+
+    @Override
+    public void setNormalSpeedTo0() {
+
+    }
 }

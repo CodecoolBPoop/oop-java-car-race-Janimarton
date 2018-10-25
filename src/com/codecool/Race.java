@@ -13,43 +13,59 @@ public class Race {
 //    boolean isThereABrokenTruck() //
 
     public static void main(String[] args) {
+
         System.out.println("The race begins \n");
-        System.out.println("The cars: \n");
+//        Objects[] vehicles = new Objects[30];
+
+        Vehicle[]vehicles = new Vehicle[30];
+
         Car[] cars = new Car[10];
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
+            vehicles[i] = cars[i];
         }
-        for (Car car : cars) {
-            System.out.println(car.name + " is goes " + car.normalSpeed + " km/h to: " + car.distanceTraveled);
-        }
-        cars[0].moveForAnHour();
-        System.out.println(cars[0].distanceTraveled + "\n");
-        System.out.println("The trucks: \n");
+
         Truck[] trucks = new Truck[10];
         for (int i = 0; i < trucks.length; i++) {
             trucks[i] = new Truck();
+            vehicles[i+10]=trucks[i];
         }
-        for (Truck truck :
-                trucks) {
-            System.out.println(truck.name + " is goes " + truck.normalSpeed + " km/h to: " + truck.distanceTraveled);
 
-        }
-        trucks[0].moveForAnHour();
-        System.out.println(trucks[0].distanceTraveled + "\n");
-
-        System.out.println("The motorcycles: \n");
         Motorcycles[] motorcycles = new Motorcycles[10];
         for (int i = 0; i < motorcycles.length; i++) {
             motorcycles[i] = new Motorcycles();
+            vehicles[i+20]=motorcycles[i];
         }
+
+        for (int i = 0; i < 50; i++) {
+            for (int j = 0; j < vehicles.length; j++) {
+                vehicles[j].moveForAnHour();
+                if (vehicles[j].setBreakDown()){
+                    int stoppedRound =0;
+                    while (stoppedRound<2){
+                        vehicles[j].setNormalSpeedTo0();
+                        stoppedRound++;
+                    }
+                }
+
+            }
+        }
+
+        System.out.println("The car part: \n");
+        for (Car car :
+                cars) {
+            System.out.println("The " + car.name + " is goes: " + car.distanceTraveled);
+        }
+        System.out.println("\n The truck part: \n");
+        for (Truck truck :
+                trucks) {
+            System.out.println("The " + truck.name + " is goes: " + truck.distanceTraveled);
+        }
+        System.out.println("\n The motorcycle part: \n");
         for (Motorcycles motorcycle :
                 motorcycles) {
-            System.out.println(motorcycle.name + " is goes " + motorcycle.normalSpeed + " km/h to: " +
-                    motorcycle.distanceTraveled);
+            System.out.println("The " + motorcycle.name + " is goes: " + motorcycle.distanceTraveled);
         }
-        motorcycles[0].moveForAnHour();
-        System.out.println(motorcycles[0].distanceTraveled + "\n");
-
 
     }
 }
