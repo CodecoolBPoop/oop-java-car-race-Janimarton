@@ -7,6 +7,11 @@ abstract class Vehicle {
     int normalSpeed;
     int distanceTraveled;
 
+    public void moveForAnHour() {
+        int speedForAnHour = this.normalSpeed;
+        this.distanceTraveled += speedForAnHour;
+    }
+
 }
 
 class Car extends Vehicle {
@@ -31,9 +36,9 @@ class Car extends Vehicle {
             "Empyrean", "Revelation"};
 
     private String getCarName() {
-        String carNames = cars[new Random().nextInt(cars.length)];
-        carNames = carNames + " " + cars[new Random().nextInt(cars.length)];
-        return carNames;
+        String carName = cars[new Random().nextInt(cars.length)];
+        carName = carName + " " + cars[new Random().nextInt(cars.length)];
+        return carName;
     }
 
     private int getNormalSpeed() {
@@ -46,18 +51,47 @@ class Car extends Vehicle {
         this.normalSpeed = maxSpeed;
     }
 
-    public void moveForAnHour() {
-        int speedForAnHour = this.normalSpeed;
-        this.distanceTraveled += speedForAnHour;
-    }
+
 }
 
 class Truck extends Vehicle {
+
 //    Truck // speed: 100km/h. 5% chance of breaking down for 2 hours.
 //            // Truck drivers are boring. They call all their trucks a random number between 0 and 1000.
 //            breakdownTurnsLeft // holds how long its still broken down.
 //    distanceTraveled
 //    moveForAnHour(Race race)
+
+    public Truck(){
+        this.name = getTruckName();
+        this.normalSpeed=getNormalSpeed();
+        this.distanceTraveled=0;
+    }
+
+    private String getTruckName(){
+        String truckName = String.valueOf((int) (Math.random() * 1000));
+        return truckName;
+    }
+
+    private int getNormalSpeed() {
+        int normalSpeed = 100;
+        return normalSpeed;
+    }
+
+    private boolean setBreakDown(){
+        boolean itIsBreakingDown = false;
+        Random allCases = new Random(99);
+        int chance = allCases.nextInt();
+        if (chance <= 4){
+            itIsBreakingDown = true;
+        }
+        return itIsBreakingDown;
+    }
+
+    public void setNormalSpeedTo0() {
+        int breakDownSpeed = 0;
+        this.normalSpeed = breakDownSpeed;
+    }
 
 }
 
