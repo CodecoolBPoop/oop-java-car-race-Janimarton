@@ -62,13 +62,13 @@ class Truck extends Vehicle {
 //    distanceTraveled
 //    moveForAnHour(Race race)
 
-    public Truck(){
+    public Truck() {
         this.name = getTruckName();
-        this.normalSpeed=getNormalSpeed();
-        this.distanceTraveled=0;
+        this.normalSpeed = getNormalSpeed();
+        this.distanceTraveled = 0;
     }
 
-    private String getTruckName(){
+    private String getTruckName() {
         String truckName = String.valueOf((int) (Math.random() * 1000));
         return truckName;
     }
@@ -78,17 +78,17 @@ class Truck extends Vehicle {
         return normalSpeed;
     }
 
-    private boolean setBreakDown(){
+    private boolean setBreakDown() {
         boolean itIsBreakingDown = false;
         Random allCases = new Random(99);
         int chance = allCases.nextInt();
-        if (chance <= 4){
+        if (chance <= 4) {
             itIsBreakingDown = true;
         }
         return itIsBreakingDown;
     }
 
-    public void setNormalSpeedTo0() {
+    private void setNormalSpeedTo0() {
         int breakDownSpeed = 0;
         this.normalSpeed = breakDownSpeed;
     }
@@ -96,10 +96,38 @@ class Truck extends Vehicle {
 }
 
 class Motorcycles extends Vehicle {
+
 //    Motorcycle // speed is 100km/h. If it rains, travels with 5-50km/h slower (randomly).
 //    static nameNumber // The number of the instance created. Used for its name.
 //            name // Are called "Motorcycle 1", "Motorcycle 2", "Motorcycle 3",... Unique.
 //    distanceTraveled
 //     moveForAnHour(Race race)
+
+    static int counter = 0;
+
+    public Motorcycles() {
+        this.normalSpeed = getNormalSpeed();
+        this.name=getMotorcyclesName() + counter;
+        this.distanceTraveled = 0;
+
+    }
+
+    private String getMotorcyclesName(){
+        String motorcyclesName = "Motorcycles ";
+        counter++;
+        return motorcyclesName;
+
+    }
+
+    private int getNormalSpeed() {
+        int normalSpeed = 100;
+        return normalSpeed;
+    }
+
+
+    private void setSlowDownSpeed() {
+        this.normalSpeed = this.normalSpeed - ((int) (Math.random() * 45) + 5);
+
+    }
 
 }
