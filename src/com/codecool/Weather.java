@@ -3,22 +3,22 @@ package com.codecool;
 import java.util.*;
 
 public class Weather {
+    private static boolean currentlyRaining = false;
 
 //    static setRaining() // 30% chance of rain.
 //    static boolean isRaining() // is it raining currently.
 
-    private static boolean setRaining(){
+    private static void setRaining() {
         boolean itIsRaining = false;
-        Random allCases = new Random(9);
-        int chance = allCases.nextInt();
-        if (chance <= 2){
+        Random allCases = new Random();
+        int chance = allCases.nextInt(9);
+        if (chance <= 2) {
             itIsRaining = true;
         }
-        return itIsRaining;
+        currentlyRaining = itIsRaining;
     }
 
-    static boolean isRaining(){
-        boolean currentlyRaining = setRaining();
+    static boolean isRaining() {
         return currentlyRaining;
     }
 
